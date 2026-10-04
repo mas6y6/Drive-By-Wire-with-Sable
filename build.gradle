@@ -37,6 +37,19 @@ repositories {
             includeGroup("cc.tweaked")
         }
     }
+
+    exclusiveContent { // Sable
+        forRepository {
+            maven {
+                url = "https://maven.ryanhcode.dev/releases"
+                name = "RyanHCode Maven"
+            }
+        }
+        filter {
+            includeGroup("dev.ryanhcode.sable")
+            includeGroup("dev.ryanhcode.sable-companion")
+        }
+    }
 }
 
 base {
@@ -134,15 +147,6 @@ dependencies {
     compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
     implementation("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
-    compileOnly(files(
-        "../sable-neoforge-1.21.1-1.0.6.jar",
-        "../sable-companion-common-1.21.1-1.4.2.jar"
-    ))
-    localRuntime(files(
-        "../sable-neoforge-1.21.1-1.0.6.jar",
-        "../sable-companion-common-1.21.1-1.4.2.jar"
-    ))
-
     compileOnly(files("../create-aeronautics-bundled-1.21.1-1.0.3.jar"))
     localRuntime(files("../create-aeronautics-bundled-1.21.1-1.0.3.jar"))
 
@@ -151,6 +155,15 @@ dependencies {
 
     compileOnly(files("libs/tracks-1.0.1.jar"))
     localRuntime(files("libs/tracks-1.0.1.jar"))
+
+    compileOnly(files("libs/sable-neoforge-1.21.1-2.0.6.jar"))
+    localRuntime(files("libs/sable-neoforge-1.21.1-2.0.6.jar"))
+
+    api(files("libs/sable-companion-common-1.21.1-1.6.0.jar"))
+
+    localRuntime(files("libs/create-aeronautics-bundled-1.21.1-1.0.3.jar"))
+    localRuntime(files("libs/drivebywire-typewriter-1.2.0.jar"))
+    compileOnly(files("libs/drivebywire-typewriter-1.2.0.jar"))
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
